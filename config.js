@@ -1,4 +1,4 @@
-var api = 'http://trtl.jrjrtech.com';
+var api = 'http://127.0.0.1';
 var blockTargetInterval = 240;
 var coinUnits = 10;
 var symbol = 'TRTL';
