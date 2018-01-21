@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
 	<link rel="shortcut icon" href="../favicon.ico">
 	<link rel="icon" type="image/icon" href="../favicon.ico" >
-    <title>Karbowanec (&#1180;) [KRB] Block Explorer</title>
+    <title>TurtleCoin [TRTL] Block Explorer</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.4.0/jquery.timeago.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-sparklines/2.1.2/jquery.sparkline.min.js"></script>
@@ -18,9 +18,9 @@
 <body>
 <script>
 
-	var blockchainExplorer 	= "/en/?hash={id}#blockchain_block";
-	var transactionExplorer = "/en/?hash={id}#blockchain_transaction";
-	var paymentIdExplorer 	= "/en/?hash={id}#blockchain_payment_id";
+	var blockchainExplorer 	= "/?hash={id}#blockchain_block";
+	var transactionExplorer = "/?hash={id}#blockchain_transaction";
+	var paymentIdExplorer 	= "/?hash={id}#blockchain_payment_id";
 	
 	var style_cookie_name = "style";
 	var style_cookie_duration = 365;
@@ -172,7 +172,7 @@
         $.ajax({
             url: api + '/getinfo',
             dataType: 'json',
-			type: 'GET',
+            type: 'GET',
             cache: 'false'
         }).done(function(data){
             pulseLiveUpdate();
@@ -224,10 +224,13 @@
     }
 
     $(function(){
-        $.get(api + '/getinfo', function(data){
-            lastStats = JSON.parse(data);
+        $.ajax({
+          url: api + '/getinfo',
+          dataType: 'json',
+          success:  function(data){
+            lastStats = data;
             routePage(fetchLiveStats);
-        });
+          }});
     });
 	
     // Blockexplorer functions
@@ -263,7 +266,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand " href="/en/"><span id="coinIcon">&#1180;</span> <strong>Karbo</strong>vanets</a>
+            <a class="navbar-brand " href="/"><img style="height: 1.5em; display: inline;" src="/img/turtlecoin.png" alt="TurtleCoin Icon"> <strong>TurtleCoin</strong></a>
 			<div id="stats_updated"><i class="fa fa-bolt"></i></div>
         </div>
 		
@@ -281,10 +284,6 @@
 				
 				<li><a class="hot_link" data-page="api.html" href="#api">
                     <i class="fa fa-code" aria-hidden="true"></i> API
-                </a></li>
-
- 			    <li><a  class="hot_link" href="/ua">
-                    <i class="fa fa-language" aria-hidden="true"></i> UA
                 </a></li>
 				
 				<button rel="/css/themes/dark/style.css" class="btn btn-default theme-switch" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Switch to Night Mode"><i class="fa fa-moon-o"></i></button>
@@ -483,7 +482,7 @@ $('#txt_search').keyup(function(e){
 			<div class="col-lg-4 col-md-4 col-sm-6">
 				<p>
 					<small>
-						&copy; 2017 <strong>Karbo</strong>vanets. 
+						&copy; 2017 <strong>TurtleCoin</strong>. 
 					</small>
 				</p>
 			</div>
@@ -492,9 +491,9 @@ $('#txt_search').keyup(function(e){
 					<small>
 					<!-- This copyright should be left intact -->
 				
-					Powered by <a target="_blank" href="https://github.com/Karbovanets/Karbowanec-Blockchain-Explorer"><i class="fa fa-github"></i> Karbowanec Blockchain Explorer</a>
+					Powered by <a target="_blank" href="https://github.com/jprjr/Turtlecoin-Blockchain-Explorer"><i class="fa fa-github"></i> TurtleCoin Blockchain Explorer</a>
 					v. 1.0.9.<br />
-					<span class="text-muted">Partially based on <strong>cryptonote-universal-pool</strong><br />
+					<span class="text-muted">Partially based on <strong>Karbovanets/Karbowanec-Blockchain-Explorer</strong><br />
 					open sourced under the <a href="http://www.gnu.org/licenses/gpl-2.0.html">GPL</a></span>
 					</small>
 				</p>
@@ -502,7 +501,7 @@ $('#txt_search').keyup(function(e){
 			<div class="col-lg-4 col-md-4 col-sm-6">
 			
 				<ul>
-					<li><a href="http://karbowanec.com/en/">karbowanec.com</li>
+					<li><a href="https://turtlecoin.lol">turtlecoin.lol</li>
 				</ul>
 				
 			</div>
