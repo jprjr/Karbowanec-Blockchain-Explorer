@@ -1,4 +1,4 @@
-var api = window.location.protocol + '//' window.location.hostname;
+var api = window.location.protocol + '//' + window.location.hostname;
 var blockTargetInterval = 240;
 var coinUnits = 10;
 var symbol = 'TRTL';
